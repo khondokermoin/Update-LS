@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "711740485978",
+    "project_id": "location-sharing-365df",
+    "storage_bucket": "location-sharing-365df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711740485978:android:5531449c193ce480798363",
+        "android_client_info": {
+          "package_name": "com.example.locationsharing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ7zsu_KKcy-Oeb0q2Cu5kO4Mkys_-L_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

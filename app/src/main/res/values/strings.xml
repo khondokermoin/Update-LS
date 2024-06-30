@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Location Sharing</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="update">Update</string>
+    <string name="enter_your_name">Enter your Name</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_location">Enter your Location</string>
+</resources>
