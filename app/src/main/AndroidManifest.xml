@@ -12,6 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LocationSharing"
         tools:targetApi="31">
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYAnVomBMFXJBA_hG8cpTPGrl2D1sE0zg" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
