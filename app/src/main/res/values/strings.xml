@@ -7,4 +7,6 @@
     <string name="enter_your_email">Enter your Email</string>
     <string name="enter_your_location">Enter your Location</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="nav_open" >Open</string>
+    <string name="nav_close" >Close</string>
 </resources>
