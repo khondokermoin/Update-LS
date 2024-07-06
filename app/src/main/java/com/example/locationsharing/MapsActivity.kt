@@ -2,6 +2,7 @@ package com.example.locationsharing
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,14 +14,16 @@ import com.example.locationsharing.databinding.ActivityMapsBinding
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var googleMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var fireStoreViewModel: FireStoreViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        fireStoreViewModel = ViewModelProvider(this).get(FireStoreViewModel::class.java)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -29,12 +32,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+    override fun onMapReady(mMap: GoogleMap) {
+        googleMap = mMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        fireStoreViewModel.getAllUser { userList->
+            for(user in userList){
+                val userLocation = user.location
+                if(userLocation.isNotEmpty()){
+                    val latLng = parseLocation(userLocation)
+                    val markerOption = MarkerOptions().position(latLng).title("${user.displayName}\n${user.email}")
+                    googleMap.addMarker(markerOption)
+                }
+            }
+        }
+    }
+
+    private fun parseLocation(userLocation: String): LatLng {
+        val latLngSplit = userLocation.split(",")
+        val latitude = latLngSplit[0].substringAfter("Lat: ").toDouble()
+        val longitude = latLngSplit[1].substringAfter("Long: ").toDouble()
+        return LatLng(latitude, longitude)
+
     }
 }

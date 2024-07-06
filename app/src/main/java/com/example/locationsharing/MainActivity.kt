@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         fireStoreViewModel = ViewModelProvider(this).get(FireStoreViewModel::class.java)
 
         userAdapter = UserAdapter(emptyList())
+
         recyclerViewUser.apply {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)

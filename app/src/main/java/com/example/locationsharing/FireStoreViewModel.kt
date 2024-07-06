@@ -42,7 +42,7 @@ class FireStoreViewModel: ViewModel() {
         val userMap = user.toMap()
         userCollection.document(userId).set(userMap)
             .addOnSuccessListener {  }
-            .addOnFailureListener {  }
+            .addOnFailureListener { e-> }
     }
     fun updateUserLocation(userId: String, location: String){
         if (userId.isEmpty()){
